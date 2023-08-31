@@ -27,7 +27,7 @@ def generate_random_date_wymg(start_date_wymg, end_date_wymg):
 
 def add_row(data, csv_file):
     with open(csv_file, mode='a', newline='') as file:
-        writer = csv.writer(file)
+        writer = csv.writer(file, delimiter= ';')
         writer.writerow(data)
 
 def main():
