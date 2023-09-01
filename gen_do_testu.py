@@ -4,14 +4,25 @@ import csv
 import random
 import datetime
 
-def generate_random_invoice_number():
-    return random.randint(1,10000)
+generate_random_invoice_numbers = set()
+
+def generate_random_invoice_number(*args):
+    if len(args) < 2:
+        raise ValueError("wymagane dwa argumenty")
+    start,end = min(args), max(args)
+    count = end - start + 1
+
+    while True:
+        invoice_number = random.randint(start, end)
+        if invoice_number not in generate_random_invoice_numbers:
+            generate_random_invoice_numbers.add(invoice_number)
+            return invoice_number
 
 def generate_random_bruto():
     return random.randint(200, 10000)
 
 def generate_random_vat():
-    return random.randint(10, 1000)
+    return random.randint(10, 199)
 
 def generate_random_date_wys(start_date, end_date):
     time_difference = end_date - start_date
@@ -35,16 +46,13 @@ def main():
     
     column_headers = ["Nip_Dluznika", "Numer_faktury", "Data_wystawienia_faktury","Data_wymg", "waluta", "Brutto", "VAT"]
 
-#    with open(csv_file, mode='w', newline='') as file:
-#        writer = csv.writer(file)
-#        writer.writerow()
-
-
-    limit = 250000
-
+    #limit = 250000
+    limit_2 = int(input('enter the limit of rows to be generated: '))
+    limit_inv_1 = int(input('enter min limit for inv generation: '))
+    limit_inv_2 = int(input('enter max limit for inv generation: '))
     count = 0
     
-    while count < limit:
+    while count < limit_2:
         data = []
         start_date = datetime.date(2026, 9, 11)
         end_date = datetime.date(2026, 9, 21)
@@ -62,8 +70,8 @@ def main():
             elif column == 0:
                 value = '1111111' # nip dluznika staly
             elif column == 1:
-                value = generate_random_invoice_number() # generacje nr faktur
-            elif column == 6:
+                value = generate_random_invoice_number(limit_inv_1, limit_inv_2) # generacje nr faktur
+            elif column == 6:   
                 value = generate_random_vat() # genracje kwot vat
             elif column == 3:
                 #value = '2023-01-11' # wpisac stala date dla wymagani faktury
