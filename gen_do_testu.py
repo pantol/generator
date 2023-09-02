@@ -15,7 +15,7 @@ def generate_random_invoice_number(*args):
     while True:
         invoice_number = random.randint(start, end)
         if invoice_number not in generate_random_invoice_numbers:
-            generate_random_invoice_numbers.add(invoice_number)
+            generate_random_invoice_numbers.add(invoice_number) 
             return invoice_number
 
 def generate_random_bruto():
@@ -33,8 +33,9 @@ def generate_random_date_wys(start_date, end_date):
 def generate_random_date_wymg(start_date_wymg, end_date_wymg):
     time_difference_wymg = end_date_wymg - start_date_wymg
     random_days_wymg = random.randint(0, time_difference_wymg.days)
-    random_date_wymg = start_date_wymg + datetime.timedelta(days=random_days_wymg)
-    return random_date_wymg
+    random_date_wymg = start_date_wymg + datetime.timedelta(days=random_days_wymg) 
+    return random_days_wymg
+
 
 def add_row(data, csv_file):
     with open(csv_file, mode='a', newline='') as file:
@@ -46,10 +47,11 @@ def main():
     
     column_headers = ["Nip_Dluznika", "Numer_faktury", "Data_wystawienia_faktury","Data_wymg", "waluta", "Brutto", "VAT"]
 
-    #limit = 250000
-    limit_2 = int(input('enter the limit of rows to be generated: '))
-    limit_inv_1 = int(input('enter min limit for inv generation: '))
-    limit_inv_2 = int(input('enter max limit for inv generation: '))
+    limit = 250000
+    #limit_2 = int(input('enter the limit of rows to be generated: '))
+    #print("wpisz zakres do generowania unikalnch numerow faktur")
+    #limit_inv_1 = int(input('enter min limit for inv generation: '))
+    #limit_inv_2 = int(input('enter max limit for inv generation: '))
     count = 0
     
     while count < limit_2:
