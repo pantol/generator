@@ -47,14 +47,14 @@ def main():
     
     column_headers = ["Nip_Dluznika", "Numer_faktury", "Data_wystawienia_faktury","Data_wymg", "waluta", "Brutto", "VAT"]
 
-    limit = 250000
+    limit = 25
     #limit_2 = int(input('enter the limit of rows to be generated: '))
     #print("wpisz zakres do generowania unikalnch numerow faktur")
-    #limit_inv_1 = int(input('enter min limit for inv generation: '))
-    #limit_inv_2 = int(input('enter max limit for inv generation: '))
+    limit_inv_1 = int(input('enter min limit for inv generation: '))
+    limit_inv_2 = int(input('enter max limit for inv generation: '))
     count = 0
     
-    while count < limit_2:
+    while count < limit:
         data = []
         start_date = datetime.date(2026, 9, 11)
         end_date = datetime.date(2026, 9, 21)
