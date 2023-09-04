@@ -49,7 +49,7 @@ def main():
 
     limit = 25
     #limit_2 = int(input('enter the limit of rows to be generated: '))
-    #print("wpisz zakres do generowania unikalnch numerow faktur")
+    print("wpisz zakres do generowania unikalnch numerow faktur")
     limit_inv_1 = int(input('enter min limit for inv generation: '))
     limit_inv_2 = int(input('enter max limit for inv generation: '))
 
