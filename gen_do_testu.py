@@ -52,16 +52,17 @@ def main():
     #print("wpisz zakres do generowania unikalnch numerow faktur")
     limit_inv_1 = int(input('enter min limit for inv generation: '))
     limit_inv_2 = int(input('enter max limit for inv generation: '))
+
+    start_date = datetime.date(2026, 9, 11)
+    end_date = datetime.date(2026, 9, 21)
+
+    start_date_wymg = datetime.date(2026, 9, 25)
+    end_date_wymg = datetime.date(2026, 10, 1)
+
     count = 0
     
     while count < limit:
         data = []
-        start_date = datetime.date(2026, 9, 11)
-        end_date = datetime.date(2026, 9, 21)
-
-        start_date_wymg = datetime.date(2026, 9, 25)
-        end_date_wymg = datetime.date(2026, 10, 1)
-
         for column in range((len(column_headers))):
             if column == 4:
                 value = 'PLN' # wartosc stala waluty
