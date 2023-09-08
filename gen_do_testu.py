@@ -10,7 +10,6 @@ def generate_random_invoice_number(*args):
     if len(args) < 2:
         raise ValueError("wymagane dwa argumenty")
     start,end = min(args), max(args)
-    count = end - start + 1
 
     while True:
         invoice_number = random.randint(start, end)
@@ -56,8 +55,8 @@ def main():
     start_date = datetime.date(2026, 9, 11)
     end_date = datetime.date(2026, 9, 21)
 
-    start_date_wymg = datetime.date(2026, 9, 25)
-    end_date_wymg = datetime.date(2026, 10, 1)
+    start_date_wymg = datetime.date(2026, 10, 5)
+    end_date_wymg = datetime.date(2026, 10, 15)
 
     count = 0
     
@@ -77,8 +76,8 @@ def main():
             elif column == 6:   
                 value = generate_random_vat() # genracje kwot vat
             elif column == 3:
-                #value = '2023-01-11' # wpisac stala date dla wymagani faktury
-                value = generate_random_date_wymg(start_date_wymg, end_date_wymg) # albo generator
+                value = '2023-01-11' # wpisac stala date dla wymagani faktury
+                #value = generate_random_date_wymg(start_date_wymg, end_date_wymg) # albo generator
             else:
                 value = ''
 
