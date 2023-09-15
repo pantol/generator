@@ -33,7 +33,7 @@ def generate_random_date_wymg(start_date_wymg, end_date_wymg):
     time_difference_wymg = end_date_wymg - start_date_wymg
     random_days_wymg = random.randint(0, time_difference_wymg.days)
     random_date_wymg = start_date_wymg + datetime.timedelta(days=random_days_wymg) 
-    return random_days_wymg
+    return random_date_wymg
 
 
 def add_row(data, csv_file):
@@ -49,14 +49,14 @@ def main():
     limit = 25
     #limit_2 = int(input('enter the limit of rows to be generated: '))
     print("wpisz zakres do generowania unikalnch numerow faktur")
-    limit_inv_1 = int(input('enter min limit for inv generation: '))
-    limit_inv_2 = int(input('enter max limit for inv generation: '))
+    limit_inv_1 = int(input('zakres poczatkowy do generowania: '))
+    limit_inv_2 = int(input('zakres koncowy do generowania: '))
 
     start_date = datetime.date(2026, 9, 11)
     end_date = datetime.date(2026, 9, 21)
 
-    start_date_wymg = datetime.date(2026, 10, 5)
-    end_date_wymg = datetime.date(2026, 10, 15)
+    start_date_wymg = datetime.date(2028, 10, 5)
+    end_date_wymg = datetime.date(2028, 10, 15)
 
     count = 0
     
@@ -76,8 +76,7 @@ def main():
             elif column == 6:   
                 value = generate_random_vat() # genracje kwot vat
             elif column == 3:
-                value = '2023-01-11' # wpisac stala date dla wymagani faktury
-                #value = generate_random_date_wymg(start_date_wymg, end_date_wymg) # albo generator
+                value = generate_random_date_wymg(start_date_wymg, end_date_wymg) # albo generator
             else:
                 value = ''
 
