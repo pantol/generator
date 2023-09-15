@@ -51,7 +51,7 @@ def main():
     print("wpisz zakres do generowania unikalnch numerow faktur")
     limit_inv_1 = int(input('zakres poczatkowy do generowania: '))
     limit_inv_2 = int(input('zakres koncowy do generowania: '))
-    waluta_faktur = str(input('wpisz walute faktury: ')).upper()
+    waluta_faktur = str(input('wpisz walute faktury:')).upper()
     nip = int(input('wpisz nip dluznika: '))
 
     start_date = datetime.date(2026, 9, 11)
@@ -90,4 +90,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
