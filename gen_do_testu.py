@@ -46,11 +46,12 @@ def main():
     
     column_headers = ["Nip_Dluznika", "Numer_faktury", "Data_wystawienia_faktury","Data_wymg", "waluta", "Brutto", "VAT"]
 
-    limit = 25
-    #limit_2 = int(input('enter the limit of rows to be generated: '))
+    #limit = 25
+    limit_2 = int(input('enter the limit of rows to be generated: '))
     print("wpisz zakres do generowania unikalnch numerow faktur")
     limit_inv_1 = int(input('zakres poczatkowy do generowania: '))
     limit_inv_2 = int(input('zakres koncowy do generowania: '))
+    waluta_faktur = str(input('wpisz walute faktury: ')).upper()
 
     start_date = datetime.date(2026, 9, 11)
     end_date = datetime.date(2026, 9, 21)
@@ -60,11 +61,11 @@ def main():
 
     count = 0
     
-    while count < limit:
+    while count < limit_2:
         data = []
         for column in range((len(column_headers))):
             if column == 4:
-                value = 'PLN' # wartosc stala waluty
+                value = waluta_faktur # wartosc waluty
             elif column == 5:
                 value = generate_random_bruto() # generacja kwot
             elif column == 2:
