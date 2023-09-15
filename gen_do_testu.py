@@ -65,20 +65,20 @@ def main():
     while count < limit_2:
         data = []
         for column in range((len(column_headers))):
-            if column == 4:
-                value = waluta_faktur # wartosc waluty
-            elif column == 5:
-                value = generate_random_bruto() # generacja kwot
-            elif column == 2:
-                value = generate_random_date_wys(start_date, end_date) # generacja dat
-            elif column == 0:
+            if column == 0:
                 value = nip # nip dluznika
             elif column == 1:
                 value = generate_random_invoice_number(limit_inv_1, limit_inv_2) # generacje nr faktur
+            elif column == 2:
+                value = generate_random_date_wys(start_date, end_date) # generacja dat wystawienia 
+            elif column == 3:
+                value = generate_random_date_wymg(start_date_wymg, end_date_wymg) # generacja dat wymagalnosci
+            elif column == 4:
+                value = waluta_faktur # wartosc waluty    
+            elif column == 5:
+                value = generate_random_bruto() # generacja kwot
             elif column == 6:   
                 value = generate_random_vat() # genracje kwot vat
-            elif column == 3:
-                value = generate_random_date_wymg(start_date_wymg, end_date_wymg) # albo generator
             else:
                 value = ''
 
