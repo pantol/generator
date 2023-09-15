@@ -52,6 +52,7 @@ def main():
     limit_inv_1 = int(input('zakres poczatkowy do generowania: '))
     limit_inv_2 = int(input('zakres koncowy do generowania: '))
     waluta_faktur = str(input('wpisz walute faktury: ')).upper()
+    nip = int(input('wpisz nip dluznika: '))
 
     start_date = datetime.date(2026, 9, 11)
     end_date = datetime.date(2026, 9, 21)
@@ -71,7 +72,7 @@ def main():
             elif column == 2:
                 value = generate_random_date_wys(start_date, end_date) # generacja dat
             elif column == 0:
-                value = '1111111' # nip dluznika staly
+                value = nip # nip dluznika
             elif column == 1:
                 value = generate_random_invoice_number(limit_inv_1, limit_inv_2) # generacje nr faktur
             elif column == 6:   
