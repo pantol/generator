@@ -47,7 +47,7 @@ def main():
     column_headers = ["Nip_Dluznika", "Numer_faktury", "Data_wystawienia_faktury","Data_wymg", "waluta", "Brutto", "VAT"]
 
     #limit = 25
-    limit_2 = int(input('enter the limit of rows to be generated: '))
+    limit_2 = int(input('wpisz ile faktur ma sie wygenerowac w pliku: '))
     print("wpisz zakres do generowania unikalnch numerow faktur")
     limit_inv_1 = int(input('zakres poczatkowy do generowania: '))
     limit_inv_2 = int(input('zakres koncowy do generowania: '))
