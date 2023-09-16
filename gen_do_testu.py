@@ -6,7 +6,7 @@ import datetime
 
 generate_random_invoice_numbers = set()
 
-def generate_random_invoice_number(*args):
+def generate_random_invoice_number(*args: int):
     if len(args) < 2:
         raise ValueError("wymagane dwa argumenty")
     start,end = min(args), max(args)
@@ -45,30 +45,28 @@ def main():
     csv_file = "data.csv"
     
     column_headers = ["Nip_Dluznika", "Numer_faktury", "Data_wystawienia_faktury","Data_wymg", "waluta", "Brutto", "VAT"]
-
-    #limit = 25
     limit_2 = int(input('wpisz ile faktur ma sie wygenerowac w pliku: '))
     print("wpisz zakres do generowania unikalnch numerow faktur")
     limit_inv_1 = int(input('zakres poczatkowy do generowania: '))
     limit_inv_2 = int(input('zakres koncowy do generowania: '))
-    waluta_faktur = str(input('wpisz walute faktury:')).upper()
-    nip = int(input('wpisz nip dluznika: '))
-
     start_date_str = input('zakres poczatkowy dat wystawienia faktur (YYYY-MM-DD): ')
     end_date_str = input('zakres koncowy dat wystawienia faktur (YYYY-MM-DD): ')
+    start_date_wymg_str = input('zakres poczatkowy dat wymagalnosci faktur (YYYY-MM-DD): ')
+    end_date_wymg_str = input('zakres koncowy dat wymagalnosci faktur (YYYY-MM-DD): ')
+    waluta_faktur = str(input('wpisz walute faktury:')).upper()
+    nip = int(input('wpisz nip dluznika: '))
 
     start_date = datetime.datetime.strptime(start_date_str, '%Y-%m-%d').date()
     end_date = datetime.datetime.strptime(end_date_str, '%Y-%m-%d').date()
 
-    start_date_wymg_str = input('zakres poczatkowy dat wymagalnosci faktur (YYYY-MM-DD): ')
-    end_date_wymg_str = input('zakres koncowy dat wymagalnosci faktur (YYYY-MM-DD): ')
-
     start_date_wymg = datetime.datetime.strptime(start_date_wymg_str, '%Y-%m-%d').date()
     end_date_wymg = datetime.datetime.strptime(end_date_wymg_str, '%Y-%m-%d').date()
 
+    first_row = ['#SOF', str(datetime.date.today())] 
+    add_row(first_row,csv_file)
 
     count = 0
-    
+
     while count < limit_2:
         data = []
         for column in range((len(column_headers))):
@@ -92,8 +90,11 @@ def main():
             data.append(value)
         add_row(data, csv_file)
         count += 1
-    
-    print(f"CSV file '{csv_file}' generated with data.")
+
+    last_row = ['#EOF', str(limit_2)] 
+    add_row(last_row,csv_file)
+
+    print(f"Plik CSV '{csv_file}' wygenerowany.")
 
 if __name__ == "__main__":
     main()
