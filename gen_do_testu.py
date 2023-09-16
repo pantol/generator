@@ -54,11 +54,18 @@ def main():
     waluta_faktur = str(input('wpisz walute faktury:')).upper()
     nip = int(input('wpisz nip dluznika: '))
 
-    start_date = datetime.date(2026, 9, 11)
-    end_date = datetime.date(2026, 9, 21)
+    start_date_str = input('zakres poczatkowy dat wystawienia faktur (YYYY-MM-DD): ')
+    end_date_str = input('zakres koncowy dat wystawienia faktur (YYYY-MM-DD): ')
 
-    start_date_wymg = datetime.date(2028, 10, 5)
-    end_date_wymg = datetime.date(2028, 10, 15)
+    start_date = datetime.datetime.strptime(start_date_str, '%Y-%m-%d').date()
+    end_date = datetime.datetime.strptime(end_date_str, '%Y-%m-%d').date()
+
+    start_date_wymg_str = input('zakres poczatkowy dat wymagalnosci faktur (YYYY-MM-DD): ')
+    end_date_wymg_str = input('zakres koncowy dat wymagalnosci faktur (YYYY-MM-DD): ')
+
+    start_date_wymg = datetime.datetime.strptime(start_date_wymg_str, '%Y-%m-%d').date()
+    end_date_wymg = datetime.datetime.strptime(end_date_wymg_str, '%Y-%m-%d').date()
+
 
     count = 0
     
