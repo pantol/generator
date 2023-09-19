@@ -42,9 +42,8 @@ def add_row(data, csv_file):
         writer.writerow(data)
 
 def main():
-    csv_file = "data.csv"
-    
-    column_headers = ["Nip_Dluznika", "Numer_faktury", "Data_wystawienia_faktury","Data_wymg", "waluta", "Brutto", "VAT"]
+    csv_file = 'data15.csv'
+    column_headers = ["Nip_Dluznika", "Numer_faktury", "Data_wystawienia_faktury","Data_wymg", "waluta", "Brutto", "VAT", "saldo_faktury"]
     limit_2 = int(input('wpisz ile faktur ma sie wygenerowac w pliku: '))
     print("wpisz zakres do generowania unikalnch numerow faktur")
     limit_inv_1 = int(input('zakres poczatkowy do generowania: '))
@@ -62,7 +61,7 @@ def main():
     start_date_wymg = datetime.datetime.strptime(start_date_wymg_str, '%Y-%m-%d').date()
     end_date_wymg = datetime.datetime.strptime(end_date_wymg_str, '%Y-%m-%d').date()
 
-    first_row = ['#SOF', str(datetime.date.today())] 
+    first_row = ['#SOF', str(datetime.date.today()), "1"] 
     add_row(first_row,csv_file)
 
     count = 0
@@ -70,6 +69,10 @@ def main():
     while count < limit_2:
         data = []
         for column in range((len(column_headers))):
+#            match column:
+#                case 0:
+#                    value = nip
+#                    break
             if column == 0:
                 value = nip # nip dluznika
             elif column == 1:
@@ -81,9 +84,13 @@ def main():
             elif column == 4:
                 value = waluta_faktur # wartosc waluty    
             elif column == 5:
-                value = generate_random_bruto() # generacja kwot
+                #value = generate_random_bruto() # generacja kwot
+                value = 100
             elif column == 6:   
-                value = generate_random_vat() # genracje kwot vat
+                #value = generate_random_vat() # genracje kwot vat
+                value = 0
+            elif column == 7:
+                value = 100
             else:
                 value = ''
 
