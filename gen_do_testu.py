@@ -12,7 +12,7 @@ def generate_random_invoice_number(*args: int):
     start,end = min(args), max(args)
 
     while True:
-        invoice_number = random.randint(start, end)
+        nvoice_number = random.randint(start, end) + 'a'
         if invoice_number not in generate_random_invoice_numbers:
             generate_random_invoice_numbers.add(invoice_number) 
             return invoice_number
@@ -42,7 +42,7 @@ def add_row(data, csv_file):
         writer.writerow(data)
 
 def main():
-    csv_file = 'data15.csv'
+    csv_file = 'data.csv'
     column_headers = ["Nip_Dluznika", "Numer_faktury", "Data_wystawienia_faktury","Data_wymg", "waluta", "Brutto", "VAT", "saldo_faktury"]
     limit_2 = int(input('wpisz ile faktur ma sie wygenerowac w pliku: '))
     print("wpisz zakres do generowania unikalnch numerow faktur")
