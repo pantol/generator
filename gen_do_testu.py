@@ -12,16 +12,14 @@ def generate_random_invoice_number(*args: int):
     start,end = min(args), max(args)
 
     while True:
-        nvoice_number = random.randint(start, end)
+        invoice_number = random.randint(start, end)
         if invoice_number not in generate_random_invoice_numbers:
             generate_random_invoice_numbers.add(invoice_number) 
             return invoice_number
 
-def generate_random_bruto():
-    return random.randint(200, 10000)
+def generate_random_bruto(): return random.randint(200, 10000)
 
-def generate_random_vat():
-    return random.randint(10, 199)
+def generate_random_vat(): return random.randint(10, 199)
 
 def generate_random_date_wys(start_date, end_date):
     time_difference = end_date - start_date
