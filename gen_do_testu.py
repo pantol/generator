@@ -12,7 +12,7 @@ def generate_random_invoice_number(*args: int):
     start,end = min(args), max(args)
 
     while True:
-        nvoice_number = random.randint(start, end) + 'a'
+        nvoice_number = random.randint(start, end)
         if invoice_number not in generate_random_invoice_numbers:
             generate_random_invoice_numbers.add(invoice_number) 
             return invoice_number
@@ -43,11 +43,15 @@ def add_row(data, csv_file):
 
 def main():
     csv_file = 'data.csv'
+
     column_headers = ["Nip_Dluznika", "Numer_faktury", "Data_wystawienia_faktury","Data_wymg", "waluta", "Brutto", "VAT", "saldo_faktury"]
+
     limit_2 = int(input('wpisz ile faktur ma sie wygenerowac w pliku: '))
     print("wpisz zakres do generowania unikalnch numerow faktur")
     limit_inv_1 = int(input('zakres poczatkowy do generowania: '))
     limit_inv_2 = int(input('zakres koncowy do generowania: '))
+    print("podany prefix bedzie ustawiony dla wszystkich faktur do tego zostanie dodana wylosowana wartosc z generatora numerow")
+    prefix_inv = str(input("podaj prefix dla faktur w pliku: ")) + '/'
     start_date_str = input('zakres poczatkowy dat wystawienia faktur (YYYY-MM-DD): ')
     end_date_str = input('zakres koncowy dat wystawienia faktur (YYYY-MM-DD): ')
     start_date_wymg_str = input('zakres poczatkowy dat wymagalnosci faktur (YYYY-MM-DD): ')
@@ -76,7 +80,7 @@ def main():
             if column == 0:
                 value = nip # nip dluznika
             elif column == 1:
-                value = generate_random_invoice_number(limit_inv_1, limit_inv_2) # generacje nr faktur
+                value = prefix_inv + str(generate_random_invoice_number(limit_inv_1, limit_inv_2)) # generacje nr faktur
             elif column == 2:
                 value = generate_random_date_wys(start_date, end_date) # generacja dat wystawienia 
             elif column == 3:
